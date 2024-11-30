@@ -17,6 +17,10 @@ function generateBrainrotResponse(input) {
         ]
     };
 
+    document.getElementById('send-btn').addEventListener('click', () => {
+    console.log("Button clicked!");
+});
+
     // Randomly pick a persona
     const personaNames = Object.keys(personas);
     const selectedPerso
