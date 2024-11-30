@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPTherapy - Brainrot Therapy</title>
+    <title>GPTherapy - Brainrot Sessions</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="chat-container">
         <h1>Welcome, top G. Ready to be a sigma again?</h1>
-        
+
+        <!-- Mood Selector -->
         <div class="mood-selector-container">
-            <label for="mood-selector">Select Mood:</label>
+            <label for="mood-selector">Select Mood: </label>
             <select id="mood-selector">
                 <option value="meme-guru">Meme Guru</option>
                 <option value="chaotic-therapist">Chaotic Therapist</option>
@@ -19,10 +20,12 @@
             </select>
         </div>
 
-        <div id="chat-log" class="chat-log"></div>
+        <div id="chat-log">
+            <!-- Chat Log will go here -->
+        </div>
 
         <div class="input-container">
-            <input type="text" id="user-input" placeholder="Type your message..." />
+            <input type="text" id="user-input" placeholder="Type your message...">
             <button id="send-btn">Send</button>
         </div>
     </div>
