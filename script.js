@@ -1,4 +1,3 @@
-// Define mood-based responses
 const personas = {
     "meme-guru": [
         "Why cry when you can vibe? *insert dancing meme*",
@@ -17,23 +16,19 @@ const personas = {
     ]
 };
 
-// Function to generate response based on mood
 function generateBrainrotResponse(input, mood) {
     const selectedPersona = personas[mood];
     const randomResponse = selectedPersona[Math.floor(Math.random() * selectedPersona.length)];
 
-    // Create message container
     const messageContainer = document.createElement('div');
     messageContainer.classList.add('bot-message');
     messageContainer.textContent = randomResponse;
 
-    // Add bot message to chat-log
     const chatLog = document.getElementById('chat-log');
     chatLog.appendChild(messageContainer);
     chatLog.scrollTop = chatLog.scrollHeight; // Scroll to bottom
 }
 
-// Event listener for the 'Send' button
 document.getElementById('send-btn').addEventListener('click', () => {
     const userInput = document.getElementById('user-input').value;
     
@@ -57,4 +52,7 @@ document.getElementById('send-btn').addEventListener('click', () => {
         // Clear input field
         document.getElementById('user-input').value = '';
     }
+
+    document.body.classList.remove('meme-guru-theme', 'existential-bot-theme', 'chaotic-therapist-theme');
+    document.body.classList.add(`${selectedMood}-theme`);
 });
