@@ -1,39 +1,96 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #fef9e7;
     margin: 0;
     padding: 0;
+    background: #f7f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
+/* Chatbox Container */
 #chatbox {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
+    width: 400px;
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
+
+/* Chat Log */
 #chat-log {
-    max-height: 300px;
+    max-height: 400px;
     overflow-y: auto;
+    padding: 10px;
+    background: #e7f3fe;
+    border-bottom: 2px solid #d1e7fd;
+}
+
+/* Chat Messages */
+.user-message {
     text-align: left;
-    padding: 10px;
-    background: #f0f4c3;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    color: #007bff;
+    background: #f0f9ff;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
 }
+
+.bot-message {
+    text-align: right;
+    color: #d9534f;
+    background: #ffecec;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+    align-self: flex-end;
+}
+
+/* Input Box */
 #user-input {
-    width: 75%;
-    padding: 10px;
-    margin-right: 10px;
-}
-#send-btn {
-    padding: 10px 15px;
-    background: #ffb74d;
-    border: none;
+    border: 2px solid #d1e7fd;
     border-radius: 5px;
-    cursor: pointer;
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    font-size: 16px;
 }
+
+/* Send Button */
+#send-btn {
+    border: none;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px 10px;
+    transition: background 0.3s ease;
+}
+
 #send-btn:hover {
-    background: #ffa726;
+    background: #0056b3;
+}
+
+/* Scrollbar Customization */
+#chat-log::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-log::-webkit-scrollbar-thumb {
+    background: #d1e7fd;
+    border-radius: 3px;
+}
+
+#chat-log::-webkit-scrollbar-thumb:hover {
+    background: #a6d3fc;
 }
