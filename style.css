@@ -15,7 +15,7 @@ body {
 .chat-container {
     width: 400px;
     padding: 20px;
-    background-color: #333;
+    background-color: #3e2a47; /* Darker purple background for Meme Guru */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -75,7 +75,7 @@ h1 {
     text-align: right;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #7e57c2; /* Light Purple */
+    background-color: #ab47bc; /* Dark purple for user messages */
     border-radius: 10px;
     max-width: 70%;
 }
@@ -84,44 +84,7 @@ h1 {
     text-align: left;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #81c784; /* Light Green */
+    background-color: #c6ff00; /* Bright yellow for bot messages */
     border-radius: 10px;
     max-width: 70%;
-}
-
-/* Mood-Based Themes */
-.meme-guru-theme {
-    background-color: #3e2a47; /* Darker purple background for Meme Guru */
-}
-
-.meme-guru-theme .user-message {
-    background-color: #ab47bc; /* Dark purple for user messages */
-}
-
-.meme-guru-theme .bot-message {
-    background-color: #c6ff00; /* Bright yellow for bot messages */
-}
-
-.existential-bot-theme {
-    background-color: #0d47a1; /* Deep blue background */
-}
-
-.existential-bot-theme .user-message {
-    background-color: #1976d2; /* Light blue for user messages */
-}
-
-.existential-bot-theme .bot-message {
-    background-color: #388e3c; /* Green for bot messages */
-}
-
-.chaotic-therapist-theme {
-    background-color: #d32f2f; /* Red background */
-}
-
-.chaotic-therapist-theme .user-message {
-    background-color: #ff1744; /* Bright red for user messages */
-}
-
-.chaotic-therapist-theme .bot-message {
-    background-color: #ff9100; /* Orange for bot messages */
 }
