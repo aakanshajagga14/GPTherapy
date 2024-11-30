@@ -2,41 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendButton = document.getElementById('send-btn');
     const userInput = document.getElementById('user-input');
     const chatLog = document.getElementById('chat-log');
-    const moodSelector = document.getElementById('mood-selector');
-    
+
     const personas = {
         "meme-guru": [
-            "Why cry when you can vibe? *insert dancing meme*",
+            "Why cry when you can vibe?",
             "Your life isn't falling apart; it's just a plot twist.",
             "More memes, less drama. That's my therapy."
-        ],
-        "chaotic-therapist": [
-            "Honestly, just yell 'potato' in public. Works for me.",
-            "Have you considered becoming a pigeon? Low stress, high vibes.",
-            "What if... you solve all your problems by eating cake?"
-        ],
-        "existential-bot": [
-            "Why do you even need therapy? We're all floating in a void.",
-            "Your brainrot is just a sign of overthinking reality.",
-            "What if this is all a simulation, and your problems aren't real?"
         ]
     };
 
-    // Set default theme
-    let currentTheme = "meme-guru";  // Default mood
-    document.body.classList.add(currentTheme + "-theme");
+    // Default to Meme Guru theme
+    document.body.classList.add('meme-guru-theme');
 
-    // Function to change theme
-    moodSelector.addEventListener('change', (e) => {
-        const newMood = e.target.value;
-        document.body.classList.remove(currentTheme + "-theme");
-        currentTheme = newMood;
-        document.body.classList.add(currentTheme + "-theme");
-    });
-
-    // Generate response from selected persona
+    // Generate response from Meme Guru persona
     function generateBrainrotResponse(input) {
-        const selectedPersona = personas[currentTheme];
+        const selectedPersona = personas["meme-guru"];
         const randomIndex = Math.floor(Math.random() * selectedPersona.length);
         return selectedPersona[randomIndex];
     }
