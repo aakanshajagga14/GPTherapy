@@ -1,1 +1,113 @@
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+}
 
+/* Chat container */
+#chat-container {
+  max-width: 1000px; /* Wider width for chat display */
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chat log */
+#chat-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* Chat messages */
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000; /* Black text for all messages */
+}
+
+.user-message {
+  background-color: #d4edda;
+  align-self: flex-end;
+}
+
+.bot-message {
+  background-color: #f8d7da;
+  align-self: flex-start;
+}
+
+/* Meme container */
+#meme-container {
+  padding: 10px;
+  text-align: center;
+}
+
+#meme-container img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Input section */
+#input-container {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+#send-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#send-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Brainrot meter */
+#brainrot-container {
+  padding: 10px;
+  background-color: #e9ecef;
+  border-top: 1px solid #ccc;
+}
+
+#brainrot-bar {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#brainrot-progress {
+  height: 100%;
+  width: 0;
+  background-color: #ff7f7f;
+  transition: width 0.5s;
+}
+
+#brainrot-level {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
