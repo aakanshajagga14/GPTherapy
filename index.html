@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPTherapy - Brainrot Sessions</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ChatRot</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
+    <header>
         <h1>Welcome, top G. Ready to be a sigma again?</h1>
-
-        <!-- Mood Selector (only Meme Guru for now) -->
-        <div class="mood-selector-container">
-            <label for="mood-selector">Select Mood: </label>
-            <select id="mood-selector" disabled>
-                <option value="meme-guru" selected>Meme Guru</option>
-            </select>
+    </header>
+    <main>
+        <div id="chat-container">
+            <div id="chat-log"></div>
+            <div id="input-container">
+                <input type="text" id="user-input" placeholder="Enter your brainrot here...">
+                <button id="send-btn">Send</button>
+            </div>
         </div>
-
-        <div id="chat-log">
-            <!-- Chat Log will go here -->
-        </div>
-
-        <div class="input-container">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button id="send-btn">Send</button>
-        </div>
-    </div>
-
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
