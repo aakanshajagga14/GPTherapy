@@ -8,7 +8,7 @@ const botResponses = {
         "Why cry when you can vibe? 🕺",
         "Your brain just needs a dance party. 🎉",
         "Imagine a penguin solving your problems. 🐧",
-        "Ever tried yelling 'waffles' in a crowd? Game-changer.",
+        "Ever tried yelling 'fries' in a crowd? Game-changer.",
         "More jokes, fewer worries. Works every time.",
         "Dance like nobody’s watching, but make it viral. 📹",
         "Why stress when you can press snooze? 💤",
