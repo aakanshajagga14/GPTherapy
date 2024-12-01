@@ -130,6 +130,11 @@
       cursor: pointer;
     }
 
+    #personality-selector .selected {
+      background-color: lightblue;
+      color: black;
+    }
+
     /* Brainrot Meter Styling */
     #brainrot-meter-container {
       margin-top: 20px;
@@ -166,11 +171,11 @@
   </div>
 
   <div id="personality-selector">
-    <button onclick="setPersonality('Silly')">Silly</button>
-    <button onclick="setPersonality('Sassy')">Sassy</button>
-    <button onclick="setPersonality('Deep Thought Dave')">Deep Thought Dave</button>
+    <button id="silly-btn" onclick="setPersonality('Silly')">Silly</button>
+    <button id="sassy-btn" onclick="setPersonality('Sassy')">Sassy</button>
+    <button id="dave-btn" onclick="setPersonality('Deep Thought Dave')">Deep Thought Dave</button>
   </div>
-  
+
   <div id="chat-container">
     <div id="meme-container"></div>
     <div id="chat-log"></div>
@@ -192,6 +197,9 @@
     const memeContainer = document.getElementById('meme-container');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
+    const sillyBtn = document.getElementById('silly-btn');
+    const sassyBtn = document.getElementById('sassy-btn');
+    const daveBtn = document.getElementById('dave-btn');
 
     const botResponses = {
       "Silly": [
@@ -237,18 +245,17 @@
       "https://i.imgflip.com/t590k.jpg"
     ];
 
-    let currentMood = "Silly";  // Default to Silly mood
+    let currentMood = null;  // No default personality
     let brainrotScore = 0;
-
-    window.onload = () => {
-      displayRandomMeme();
-      const greeting = `Hi there! Welcome, top G. You're chatting with ${currentMood} 🧠`;
-      addMessage(greeting, 'bot-message');
-    };
 
     sendBtn.addEventListener('click', () => {
       const userText = userInput.value.trim();
       if (userText === '') return;
+
+      if (!currentMood) {
+        alert("Please select a personality before starting the chat!");
+        return;
+      }
 
       addMessage(userText, 'user-message');
       generateBotResponse(userText);
@@ -259,12 +266,13 @@
     function generateBotResponse(input) {
       const moodResponses = botResponses[currentMood];
       const response = moodResponses[Math.floor(Math.random() * moodResponses.length)];
-      setTimeout(() => addMessage(`${currentMood} says: ${response}`, 'bot-message'), 500);
+      addMessage(response, 'bot-message');
+      displayRandomMeme();
     }
 
-    function addMessage(text, className) {
+    function addMessage(text, sender) {
       const messageElement = document.createElement('div');
-      messageElement.className = `message ${className}`;
+      messageElement.classList.add('message', sender);
       messageElement.textContent = text;
       chatLog.appendChild(messageElement);
       chatLog.scrollTop = chatLog.scrollHeight;  // Scroll to the latest message
@@ -301,9 +309,22 @@
 
     function setPersonality(personality) {
       currentMood = personality;
+      highlightSelectedPersonality(personality);
       displayMessage(`You chose ${currentMood} personality!`, 'bot-message');
     }
 
+    function highlightSelectedPersonality(personality) {
+      const buttons = [sillyBtn, sassyBtn, daveBtn];
+      buttons.forEach(button => button.classList.remove('selected'));
+
+      if (personality === "Silly") {
+        sillyBtn.classList.add('selected');
+      } else if (personality === "Sassy") {
+        sassyBtn.classList.add('selected');
+      } else if (personality === "Deep Thought Dave") {
+        daveBtn.classList.add('selected');
+      }
+    }
   </script>
 </body>
 </html>
