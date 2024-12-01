@@ -19,9 +19,9 @@ const botResponses = [
     "You're not lazy; you're in energy-saving mode. 🔋"
 ];
 
-// Greet the user when the page loads
+// Ensure greeting is shown when the page loads
 window.onload = () => {
-    const greeting = "Welcome, top G! Ready for some sigma-level therapy?";
+    const greeting = "Hi there! Welcome, top G. Ready to be a sigma again? 💪";
     addMessage(greeting, 'bot-message');
 };
 
