@@ -4,16 +4,27 @@ const sendBtn = document.getElementById("send-btn");
 const brainrotProgress = document.getElementById("brainrot-progress");
 const brainrotLevel = document.getElementById("brainrot-level");
 const memeContainer = document.getElementById("meme-container");
+const personalitySelector = document.getElementById("personality-selector");
 
 let brainrotValue = 0;
 
-const botResponses = [
-  "Tell me about your woes, I am here to listen.",
-  "Hmm, sounds like a classic case of brainrot.",
-  "Ah, the good ol' existential crisis. A common side effect of brainrot.",
-  "Let me prescribe some memes to soothe your mind.",
-  "Keep going! This therapy session is getting interesting.",
-];
+const personalities = {
+  sally: [
+    "Tell me more. I’m here for you.",
+    "Wow, that must be tough. You're doing great.",
+    "I think you’re being really brave.",
+  ],
+  dave: [
+    "Really? That’s your problem?",
+    "Classic brainrot. It’s almost impressive.",
+    "Oh no, the sarcasm detector is off the charts.",
+  ],
+  alex: [
+    "That’s chill. Let’s just vibe.",
+    "You’ve got this. Let’s not overthink it.",
+    "We’ll figure this out together. Easy peasy.",
+  ],
+};
 
 const memes = [
   "https://i.imgur.com/8Yg3FPU.jpeg",
@@ -45,7 +56,9 @@ function sendMessage() {
   addMessage(userMessage, "user");
   userInput.value = "";
 
+  const selectedPersonality = personalitySelector.value;
   setTimeout(() => {
+    const botResponses = personalities[selectedPersonality];
     const botMessage = botResponses[Math.floor(Math.random() * botResponses.length)];
     addMessage(botMessage, "bot");
 
