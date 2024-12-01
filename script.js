@@ -97,11 +97,11 @@ function updateBrainrotMeter(length) {
   const brainrotScore = Math.min((length / 50) * 100, 100); // Adjust factor for scaling
   brainrotMeter.style.width = brainrotScore + '%';
 
-  if (brainrotScore > 70) {
+  if (brainrotScore > 50) {
     brainrotLevel.textContent = `Brainrot Level: ${Math.round(
       brainrotScore
     )} - Extreme`;
-  } else if (brainrotScore > 40) {
+  } else if (brainrotScore > 30) {
     brainrotLevel.textContent = `Brainrot Level: ${Math.round(
       brainrotScore
     )} - High`;
