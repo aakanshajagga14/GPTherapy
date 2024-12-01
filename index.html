@@ -113,6 +113,23 @@
       color: white;
     }
 
+    /* Personality Selector */
+    #personality-selector {
+      display: flex;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    #personality-selector button {
+      background-color: lightgreen;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
     /* Brainrot Meter Styling */
     #brainrot-meter-container {
       margin-top: 20px;
@@ -146,6 +163,12 @@
 <body>
   <div id="header">
     <h1>Welcome to Chatrot, top G! Ready for some brainrot?</h1>
+  </div>
+
+  <div id="personality-selector">
+    <button onclick="setPersonality('Silly')">Silly</button>
+    <button onclick="setPersonality('Sassy')">Sassy</button>
+    <button onclick="setPersonality('Deep Thought Dave')">Deep Thought Dave</button>
   </div>
   
   <div id="chat-container">
@@ -202,7 +225,6 @@
         "What if the answer is… waffles? 🧇",
         "The void isn’t scary if you yell at it. Echo therapy.",
         "What’s worse? Homework or existential dread? 🤯",
-        "Deep questions require deep fries. 🍟",
         "Reality is overrated. Try imagination instead. 🎨",
         "Who are you without the memes? Think about that.",
         "Life is short; have you tried screaming into a pillow? 😱"
@@ -215,7 +237,8 @@
       "https://i.imgflip.com/t590k.jpg"
     ];
 
-    let currentMood = pickRandomMood();
+    let currentMood = "Silly";  // Default to Silly mood
+    let brainrotScore = 0;
 
     window.onload = () => {
       displayRandomMeme();
@@ -229,6 +252,7 @@
 
       addMessage(userText, 'user-message');
       generateBotResponse(userText);
+      calculateBrainrotScore(userText);
       userInput.value = '';
     });
 
@@ -243,43 +267,26 @@
       messageElement.className = `message ${className}`;
       messageElement.textContent = text;
       chatLog.appendChild(messageElement);
-      chatLog.scrollTop = chatLog.scrollHeight;
+      chatLog.scrollTop = chatLog.scrollHeight;  // Scroll to the latest message
     }
 
     function displayRandomMeme() {
       const randomMeme = memes[Math.floor(Math.random() * memes.length)];
       const imgElement = document.createElement('img');
       imgElement.src = randomMeme;
-      imgElement.alt = "Random Meme";
-      memeContainer.innerHTML = ''; 
       memeContainer.appendChild(imgElement);
     }
 
-    function pickRandomMood() {
-      const moods = Object.keys(botResponses);
-      return moods[Math.floor(Math.random() * moods.length)];
-    }
-
     function calculateBrainrotScore(input) {
-      let score = 0;
-
-      if (input.length < 5) {
-        score += 1;
-      } else if (input.length > 50) {
-        score += 3;
-      }
-
-      if (input.includes('potato') || input.includes('meme') || input.includes('random')) {
-        score += 2;
-      }
-
-      updateBrainrotMeter(score);
+      const inputLength = input.length;
+      brainrotScore += Math.min(inputLength / 10, 10);
+      updateBrainrotMeter(brainrotScore);
     }
 
     function updateBrainrotMeter(score) {
       const progressBar = document.getElementById('brainrot-progress');
       const brainrotText = document.getElementById('brainrot-level');
-      const brainrotPercentage = score * 20; 
+      const brainrotPercentage = score * 10;
 
       progressBar.style.width = `${brainrotPercentage}%`;
 
@@ -291,6 +298,12 @@
         brainrotText.textContent = 'Brainrot Level: 3 - Extreme';
       }
     }
+
+    function setPersonality(personality) {
+      currentMood = personality;
+      displayMessage(`You chose ${currentMood} personality!`, 'bot-message');
+    }
+
   </script>
 </body>
 </html>
