@@ -25,7 +25,7 @@
 ---
 
 ## 🖼️ Screenshots  
-(Include screenshots of your project here, such as the chat window, brainrot meter, and meme display.)  
+![image](https://github.com/user-attachments/assets/dbe09680-7ec0-433b-8ed5-1a7fe4c5623b)
 
 ---
 
@@ -39,7 +39,7 @@
 ## 🚧 How to Run Locally  
 1. Clone this repository:  
    ```bash  
-   git clone https://github.com/your-username/chatrot.git  
+   git clone [https://aakanshajagga14.github.io/gptherapy/].git
    ```  
 
 2. Navigate to the project directory:  
