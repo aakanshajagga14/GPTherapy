@@ -1,27 +1,38 @@
 const chatLog = document.getElementById('chat-log');
+const memeContainer = document.getElementById('meme-container');
 const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 
-const botResponses = [
-    "Why cry when you can vibe? 🕺",
-    "Your life isn't falling apart; it's just a plot twist!",
-    "Potato therapy is underrated. Just yell 'POTATO!' 😤",
-    "Have you tried turning your problems off and on again?",
-    "Life is just brainrot with extra steps.",
-    "You’re not lost; you’re exploring chaotic vibes!",
-    "What if your brainrot is actually your superpower? 🧠⚡",
-    "Fun fact: Memes are cheaper than therapy.",
-    "Your brain just needs a dance party. Problem solved. 🎉",
-    "Imagine a penguin solving your problems. Feel better yet? 🐧",
-    "Step 1: Panic. Step 2: Do it anyway. 💪",
-    "Remember, chaos is just misunderstood order. 🤔",
-    "Drink water, touch grass, and vibe. That's the cure.",
-    "You're not lazy; you're in energy-saving mode. 🔋"
+const botResponses = {
+    "Silly": [
+        "Why cry when you can vibe? 🕺",
+        "Your brain just needs a dance party. 🎉",
+        "Imagine a penguin solving your problems. 🐧",
+    ],
+    "Sassy": [
+        "Oh honey, your life isn't falling apart. It's just dramatic.",
+        "Did you just brainrot? Because same. 🙄",
+        "Get yourself together, drama llama! 🦙",
+    ],
+    "Deep Thought Dave": [
+        "Why do we exist? Probably for memes. 🤔",
+        "Your brainrot is the universe’s way of evolving.",
+        "Do you even need therapy? Or is life just chaos? 🌌"
+    ]
+};
+
+const memes = [
+    "https://i.imgflip.com/5z6r1b.jpg", // Funny meme
+    "https://i.imgflip.com/4t6d5c.jpg", // Silly face
+    "https://i.imgflip.com/2gxnlq.jpg", // Cat meme
 ];
 
-// Ensure greeting is shown when the page loads
+// Pick a random mood for the bot
+let currentMood = pickRandomMood();
+
 window.onload = () => {
-    const greeting = "Hi there! Welcome, top G. Ready to be a sigma again? 💪";
+    displayRandomMeme();
+    const greeting = `Hi there! Welcome, top G. You're chatting with ${currentMood} 🧠`;
     addMessage(greeting, 'bot-message');
 };
 
@@ -30,21 +41,38 @@ sendBtn.addEventListener('click', () => {
     const userText = userInput.value.trim();
     if (userText === '') return;
 
-    // Add user message to chat
     addMessage(userText, 'user-message');
-
-    // Generate bot response
-    const botResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-    setTimeout(() => addMessage(botResponse, 'bot-message'), 500);
-
+    generateBotResponse(userText);
     userInput.value = '';
 });
 
-// Function to add messages to the chat log
+// Function to generate bot responses
+function generateBotResponse(input) {
+    const moodResponses = botResponses[currentMood];
+    const response = moodResponses[Math.floor(Math.random() * moodResponses.length)];
+    setTimeout(() => addMessage(`${currentMood} says: ${response}`, 'bot-message'), 500);
+}
+
+// Function to add messages to chat log
 function addMessage(text, className) {
     const messageElement = document.createElement('div');
-    messageElement.className = className;
+    messageElement.className = `message ${className}`;
     messageElement.textContent = text;
     chatLog.appendChild(messageElement);
     chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+// Display a random meme
+function displayRandomMeme() {
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    const imgElement = document.createElement('img');
+    imgElement.src = randomMeme;
+    memeContainer.innerHTML = ''; // Clear previous meme
+    memeContainer.appendChild(imgElement);
+}
+
+// Pick a random mood
+function pickRandomMood() {
+    const moods = Object.keys(botResponses);
+    return moods[Math.floor(Math.random() * moods.length)];
 }
