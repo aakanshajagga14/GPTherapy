@@ -5,48 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatrot - Brainrot Therapy</title>
   <style>
+    /* Body Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: black;
       color: white;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
     }
 
+    /* Header */
     #header {
       text-align: center;
       margin-bottom: 20px;
     }
 
-    #chat-container {
-      background-color: #333;
-      width: 90%;
-      max-width: 500px;
-      padding: 10px;
-      border-radius: 8px;
-      overflow-y: auto;
-      max-height: 60vh;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    h1 {
+      color: lightgreen;
     }
 
+    /* Chat Container */
+    #chat-container {
+      background-color: #1e1e1e;
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-y: auto;
+      max-height: 60vh;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Messages */
     .message {
       margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
     }
 
     .user-message {
+      background-color: #3e3e7e;
       color: lightpurple;
       text-align: right;
     }
 
     .bot-message {
+      background-color: #3e7e3e;
       color: lightgreen;
       text-align: left;
     }
 
+    /* Meme Container */
+    #meme-container img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    /* User Input */
     #user-input-container {
       display: flex;
       width: 90%;
@@ -63,29 +84,24 @@
     }
 
     #send-btn {
-      background-color: purple;
-      color: white;
+      background-color: lightgreen;
+      color: black;
       border: none;
       border-radius: 8px;
       padding: 10px 20px;
       margin-left: 10px;
       cursor: pointer;
+      font-weight: bold;
     }
 
     #send-btn:hover {
-      background-color: lightgreen;
-    }
-
-    #meme-container img {
-      width: 100%;
-      border-radius: 8px;
-      margin: 10px 0;
+      background-color: lightpurple;
     }
   </style>
 </head>
 <body>
   <div id="header">
-    <h1>Welcome, top G! Ready for some sigma brainrot? 💪</h1>
+    <h1>Welcome, top G! Ready for some sigma brainrot therapy? 💡</h1>
   </div>
   <div id="chat-container">
     <div id="chat-log"></div>
@@ -98,4 +114,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
