@@ -1,136 +1,113 @@
-/* General Body Styling */
+/* General body styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: black;
-  color: white;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Chat container */
+#chat-container {
+  max-width: 800px; /* Increased width */
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Header Styling */
-#header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-h1 {
-  color: lightgreen;
-  font-size: 1.8em;
-  margin: 10px;
-}
-
-/* Chat Container */
-#chat-container {
-  background-color: #1e1e1e;
-  width: 90%;
-  max-width: 500px;
-  padding: 20px;
-  border-radius: 10px;
+/* Chat log */
+#chat-log {
+  flex: 1;
   overflow-y: auto;
-  max-height: 60vh;
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-/* Messages Styling */
+/* Chat messages */
 .message {
   margin: 10px 0;
   padding: 10px;
   border-radius: 8px;
-  font-size: 1em;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000; /* Black text for all messages */
 }
 
 .user-message {
-  background-color: #5a5a8e;
-  color: lightpurple;
-  text-align: right;
-  margin-left: auto;
+  background-color: #d4edda;
+  align-self: flex-end;
 }
 
 .bot-message {
-  background-color: #5a8e5a;
-  color: lightgreen;
-  text-align: left;
-  margin-right: auto;
+  background-color: #f8d7da;
+  align-self: flex-start;
 }
 
-/* Meme Styling */
+/* Meme container */
+#meme-container {
+  padding: 10px;
+  text-align: center;
+}
+
 #meme-container img {
-  width: 100%;
+  max-width: 100%;
   border-radius: 8px;
-  margin: 10px 0;
-  border: 2px solid #3e7e3e;
 }
 
-/* User Input Styling */
-#user-input-container {
+/* Input section */
+#input-container {
   display: flex;
-  width: 90%;
-  max-width: 500px;
-  margin-top: 10px;
+  border-top: 1px solid #ccc;
 }
 
 #user-input {
   flex: 1;
   padding: 10px;
-  border-radius: 8px;
   border: none;
-  font-size: 1em;
-  background-color: #2e2e2e;
-  color: white;
-}
-
-#user-input::placeholder {
-  color: #a0a0a0;
+  font-size: 16px;
 }
 
 #send-btn {
-  background-color: lightgreen;
-  color: black;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 8px;
   padding: 10px 20px;
-  margin-left: 10px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 #send-btn:hover {
-  background-color: lightpurple;
-  color: white;
+  background-color: #0056b3;
 }
 
-/* Brainrot Meter Styling */
-#brainrot-meter-container {
-  margin-top: 20px;
-  width: 90%;
-  max-width: 600px;
-  text-align: center;
-  color: white;
+/* Brainrot meter */
+#brainrot-container {
+  padding: 10px;
+  background-color: #e9ecef;
+  border-top: 1px solid #ccc;
 }
 
-#brainrot-level {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-#brainrot-meter {
-  background-color: #333;
-  width: 100%;
-  height: 20px;
-  border-radius: 10px;
+#brainrot-bar {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
   overflow: hidden;
 }
 
 #brainrot-progress {
   height: 100%;
-  background-color: #ff6347;
-  width: 0%;
-  transition: width 0.5s ease;
+  width: 0;
+  background-color: #ff7f7f;
+  transition: width 0.5s;
+}
+
+#brainrot-level {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
 }
