@@ -3,29 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPTherapy</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Chatrot - Brainrot Chatbot</title>
+  <style>
+    /* Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* Header */
+    #header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: lightgreen;
+      font-size: 1.8em;
+      margin: 10px;
+    }
+
+    /* Chat Container */
+    #chat-container {
+      background-color: #1e1e1e;
+      width: 80%;
+      max-width: 700px;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-y: auto;
+      max-height: 60vh;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Messages */
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 1.4;
+    }
+
+    .user-message {
+      background-color: #5a5a8e;
+      color: black;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    .bot-message {
+      background-color: #5a8e5a;
+      color: lightgreen;
+      text-align: left;
+      margin-right: auto;
+    }
+
+    /* Meme Container */
+    #meme-container img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+      border: 2px solid #3e7e3e;
+    }
+
+    /* User Input */
+    #user-input-container {
+      display: flex;
+      width: 90%;
+      max-width: 500px;
+      margin-top: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      background-color: #2e2e2e;
+      color: white;
+    }
+
+    #user-input::placeholder {
+      color: #a0a0a0;
+    }
+
+    #send-btn {
+      background-color: lightgreen;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    #send-btn:hover {
+      background-color: lightpurple;
+      color: white;
+    }
+
+    /* Brainrot Meter Styling */
+    #brainrot-meter-container {
+      margin-top: 20px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      color: white;
+    }
+
+    #brainrot-level {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    #brainrot-meter {
+      background-color: #333;
+      width: 100%;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #brainrot-progress {
+      height: 100%;
+      background-color: #ff6347;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+  </style>
 </head>
 <body>
+  <div id="header">
+    <h1>Welcome to Chatrot, top G! Ready for some brainrot?</h1>
+  </div>
+  
   <div id="chat-container">
-    <div id="chat-log"></div>
     <div id="meme-container"></div>
-    <div id="input-container">
-      <select id="personality-selector">
-        <option value="sally">Sally - The Empathetic Listener</option>
-        <option value="dave">Dave - The Sarcastic Genius</option>
-        <option value="alex">Alex - The Chill Buddy</option>
-      </select>
-      <input type="text" id="user-input" placeholder="Type your message...">
-      <button id="send-btn">Send</button>
-    </div>
-    <div id="brainrot-container">
-      <div id="brainrot-bar">
+    <div id="chat-log"></div>
+    <div id="brainrot-meter-container">
+      <div id="brainrot-level">Brainrot Level: 0 - Mild</div>
+      <div id="brainrot-meter">
         <div id="brainrot-progress"></div>
       </div>
-      <div id="brainrot-level">Brainrot Meter: 0%</div>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <div id="user-input-container">
+    <input type="text" id="user-input" placeholder="Say something..." />
+    <button id="send-btn">Send</button>
+  </div>
+
+  <script>
+    const chatLog = document.getElementById('chat-log');
+    const memeContainer = document.getElementById('meme-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    const botResponses = {
+      "Silly": [
+        "Why cry when you can vibe? 🕺",
+        "Your brain just needs a dance party. 🎉",
+        "Imagine a penguin solving your problems. 🐧",
+        "Ever tried yelling 'fries' in a crowd? Game-changer.",
+        "More jokes, fewer worries. Works every time.",
+        "Dance like nobody’s watching, but make it viral. 📹",
+        "Why stress when you can press snooze? 💤",
+        "Laugh it off. Trust me, it's free therapy. 😂",
+        "Your brain needs more memes. FACTS. 📖",
+        "Life’s too short for serious chats. Let’s go!"
+      ],
+      "Sassy": [
+        "Oh honey, your life isn't falling apart. It's just dramatic.",
+        "Did you just brainrot? Because same. 🙄",
+        "Get yourself together, drama llama! 🦙",
+        "You’re not a mess; you’re just in beta testing.",
+        "That outfit though… are we matching bad vibes? 👗",
+        "Stop scrolling TikTok and touch grass. 🌱",
+        "Sassy but classy—that’s me and you, right?",
+        "Diva moment incoming... oh wait, it's just you. 😉",
+        "Channel that energy into memes, darling. 💅",
+        "You slay, but take a nap, okay? 🛌"
+      ],
+      "Deep Thought Dave": [
+        "Why do we exist? Probably for memes. 🤔",
+        "Your brainrot is the universe’s way of evolving.",
+        "Do you even need therapy? Or is life just chaos? 🌌",
+        "What if the answer is… waffles? 🧇",
+        "The void isn’t scary if you yell at it. Echo therapy.",
+        "What’s worse? Homework or existential dread? 🤯",
+        "Deep questions require deep fries. 🍟",
+        "Reality is overrated. Try imagination instead. 🎨",
+        "Who are you without the memes? Think about that.",
+        "Life is short; have you tried screaming into a pillow? 😱"
+      ]
+    };
+
+    const memes = [
+      "https://th.bing.com/th/id/OIP.0MDI4C27d7_8TkC08Su-wgHaHa?rs=1&pid=ImgDetMain", 
+      "https://i.imgflip.com/1sfah4.jpg",
+      "https://i.imgflip.com/t590k.jpg"
+    ];
+
+    let currentMood = pickRandomMood();
+
+    window.onload = () => {
+      displayRandomMeme();
+      const greeting = `Hi there! Welcome, top G. You're chatting with ${currentMood} 🧠`;
+      addMessage(greeting, 'bot-message');
+    };
+
+    sendBtn.addEventListener('click', () => {
+      const userText = userInput.value.trim();
+      if (userText === '') return;
+
+      addMessage(userText, 'user-message');
+      generateBotResponse(userText);
+      userInput.value = '';
+    });
+
+    function generateBotResponse(input) {
+      const moodResponses = botResponses[currentMood];
+      const response = moodResponses[Math.floor(Math.random() * moodResponses.length)];
+      setTimeout(() => addMessage(`${currentMood} says: ${response}`, 'bot-message'), 500);
+    }
+
+    function addMessage(text, className) {
+      const messageElement = document.createElement('div');
+      messageElement.className = `message ${className}`;
+      messageElement.textContent = text;
+      chatLog.appendChild(messageElement);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function displayRandomMeme() {
+      const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+      const imgElement = document.createElement('img');
+      imgElement.src = randomMeme;
+      imgElement.alt = "Random Meme";
+      memeContainer.innerHTML = ''; 
+      memeContainer.appendChild(imgElement);
+    }
+
+    function pickRandomMood() {
+      const moods = Object.keys(botResponses);
+      return moods[Math.floor(Math.random() * moods.length)];
+    }
+
+    function calculateBrainrotScore(input) {
+      let score = 0;
+
+      if (input.length < 5) {
+        score += 1;
+      } else if (input.length > 50) {
+        score += 3;
+      }
+
+      if (input.includes('potato') || input.includes('meme') || input.includes('random')) {
+        score += 2;
+      }
+
+      updateBrainrotMeter(score);
+    }
+
+    function updateBrainrotMeter(score) {
+      const progressBar = document.getElementById('brainrot-progress');
+      const brainrotText = document.getElementById('brainrot-level');
+      const brainrotPercentage = score * 20; 
+
+      progressBar.style.width = `${brainrotPercentage}%`;
+
+      if (brainrotPercentage < 20) {
+        brainrotText.textContent = 'Brainrot Level: 1 - Mild';
+      } else if (brainrotPercentage < 60) {
+        brainrotText.textContent = 'Brainrot Level: 2 - Moderate';
+      } else {
+        brainrotText.textContent = 'Brainrot Level: 3 - Extreme';
+      }
+    }
+  </script>
 </body>
 </html>
