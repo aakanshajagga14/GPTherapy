@@ -31,6 +31,14 @@
       margin: 10px;
     }
 
+    /* Choose Personality Heading */
+    #choose-personality-heading {
+      font-size: 1.4em;
+      color: lightblue;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
     /* Chat Container */
     #chat-container {
       background-color: #1e1e1e;
@@ -170,6 +178,9 @@
     <h1>Welcome to Chatrot, top G! Ready for some brainrot?</h1>
   </div>
 
+  <!-- Choose Personality Heading -->
+  <div id="choose-personality-heading">Choose the personality you wanna rizz up</div>
+
   <div id="personality-selector">
     <button id="silly-btn" onclick="setPersonality('Silly')">Silly</button>
     <button id="sassy-btn" onclick="setPersonality('Sassy')">Sassy</button>
@@ -264,9 +275,9 @@
     });
 
     function generateBotResponse(input) {
-      const moodResponses = botResponses[currentMood];
-      const response = moodResponses[Math.floor(Math.random() * moodResponses.length)];
-      addMessage(response, 'bot-message');
+      const responses = botResponses[currentMood];
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      addMessage(randomResponse, 'bot-message');
       displayRandomMeme();
     }
 
@@ -275,7 +286,7 @@
       messageElement.classList.add('message', sender);
       messageElement.textContent = text;
       chatLog.appendChild(messageElement);
-      chatLog.scrollTop = chatLog.scrollHeight;  // Scroll to the latest message
+      chatLog.scrollTop = chatLog.scrollHeight;
     }
 
     function displayRandomMeme() {
