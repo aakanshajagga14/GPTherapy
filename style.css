@@ -105,3 +105,34 @@ h1 {
   background-color: lightpurple;
   color: white;
 }
+
+
+/* Brainrot Meter Styling */
+#brainrot-meter-container {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+}
+
+#brainrot-level {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+#brainrot-meter {
+  background-color: #333;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#brainrot-progress {
+  height: 100%;
+  background-color: #ff6347;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
