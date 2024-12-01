@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatrot - Brainrot Therapy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #chat-container {
+      background-color: #333;
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-y: auto;
+      max-height: 60vh;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .message {
+      margin: 10px 0;
+    }
+
+    .user-message {
+      color: lightpurple;
+      text-align: right;
+    }
+
+    .bot-message {
+      color: lightgreen;
+      text-align: left;
+    }
+
+    #user-input-container {
+      display: flex;
+      width: 90%;
+      max-width: 500px;
+      margin-top: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+
+    #send-btn {
+      background-color: purple;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #send-btn:hover {
+      background-color: lightgreen;
+    }
+
+    #meme-container img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Welcome, top G! Ready for some sigma brainrot? 💪</h1>
+  </div>
+  <div id="chat-container">
+    <div id="chat-log"></div>
+    <div id="meme-container"></div>
+  </div>
+  <div id="user-input-container">
+    <input type="text" id="user-input" placeholder="Enter your brainrot here...">
+    <button id="send-btn">Send</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
 
