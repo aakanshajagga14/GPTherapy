@@ -9,7 +9,7 @@ body {
 
 /* Chat container */
 #chat-container {
-  max-width: 800px; /* Increased width */
+  max-width: 1000px; /* Wider width for chat display */
   margin: 20px auto;
   background-color: #ffffff;
   border: 1px solid #ccc;
