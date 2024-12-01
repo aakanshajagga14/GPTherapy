@@ -106,7 +106,6 @@ h1 {
   color: white;
 }
 
-
 /* Brainrot Meter Styling */
 #brainrot-meter-container {
   margin-top: 20px;
@@ -135,4 +134,3 @@ h1 {
   width: 0%;
   transition: width 0.5s ease;
 }
-
